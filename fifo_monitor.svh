@@ -28,9 +28,20 @@ class fifo_monitor extends uvm_monitor;
         forever begin
             rsp_seq_item = fifo_seq_item::type_id::create("rsp_seq_item", this);
             @(negedge fifo_vif.clk);
-            //interface input signals
-            `uvm_info("run_phase", rsp_seq_item.convert2string_stimulus(), UVM_HIGH)
+            //interface signals
+            rsp_seq_item.rst_n = fifo_vif.rst_n;
+            rsp_seq_item.wr_en = fifo_vif.wr_en;
+            rsp_seq_item.rd_en = fifo_vif.rd_en;
+            rsp_seq_item.data_in = fifo_vif.data_in;
+            rsp_seq_item.data_out = fifo_vif.data_out;
+            rsp_seq_item.wr_ack = fifo_vif.wr_ack;
+            rsp_seq_item.overflow = fifo_vif.overflow;
+            rsp_seq_item.full = fifo_vif.full;
+            rsp_seq_item.empty = fifo_vif.empty;
+            rsp_seq_item.almostfull = fifo_vif.almostfull;
+            rsp_seq_item.almostempty = fifo_vif.almostempty;
+            rsp_seq_item.underflow = fifo_vif.underflow;
+            `uvm_info("run_phase", rsp_seq_item.convert2string(), UVM_HIGH)
         end
     endtask
-
 endclass

@@ -1,0 +1,8 @@
+shared_pkg.sv
+fifo_transactions_pkg.sv
+fifo_agent_pkg.sv
+fifo_env_pkg.sv
+fifo_test_pkg.sv
+fifo_if.sv 
+FIFO.sv
+top.sv

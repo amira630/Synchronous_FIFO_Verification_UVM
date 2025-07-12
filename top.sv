@@ -7,13 +7,9 @@
 
 `timescale 1ns / 1ps
 
-// Standard UVM import & include:
-import uvm_pkg::*;
-`include "uvm_macros.svh"
-
 // Any further package imports:
+import fifo_transactions_pkg::*;
 import fifo_test_pkg::*;
-import shared_pkg::*;
 
 module top();
 
@@ -34,8 +30,7 @@ module top();
 
     FIFO #(.FIFO_WIDTH(FIFO_WIDTH), .FIFO_DEPTH(FIFO_DEPTH)) DUT (fifo_if);
 
-    FIFO SVA (fifoif);
-    bind FIFO DUT SVA (fifoif);
+    bind FIFO fifo_sva SVA (fifoif);
 
     initial begin
         uvm_config_db #(virtual fifo_if)::set(null, "uvm_test_top", "FIFO_IF", fifoif);

@@ -8,7 +8,7 @@
 class fifo_agent extends uvm_agent;
     `uvm_component_utils(fifo_agent)
 
-    fifo_sequencer sqr;
+    uvm_sequencer #(fifo_sequence_item) sqr;
     fifo_driver drv;
     fifo_monitor mon;
     fifo_config fifo_cfg;
