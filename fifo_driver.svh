@@ -5,7 +5,7 @@
 // Description: Driver class for a UVM verification environment.
 ////////////////////////////////////////////////////////////////////////////////
 
-class fifo_driver extends uvm_driver;
+class fifo_driver extends uvm_driver #(fifo_seq_item);
     `uvm_component_utils(fifo_driver)
 
     virtual fifo_if fifo_vif;

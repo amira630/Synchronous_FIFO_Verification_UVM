@@ -8,7 +8,7 @@
 class fifo_agent extends uvm_agent;
     `uvm_component_utils(fifo_agent)
 
-    uvm_sequencer #(fifo_sequence_item) sqr;
+    uvm_sequencer #(fifo_seq_item) sqr;
     fifo_driver drv;
     fifo_monitor mon;
     fifo_config fifo_cfg;
@@ -25,7 +25,7 @@ class fifo_agent extends uvm_agent;
         if (!uvm_config_db #(fifo_config)::get(this, "", "CFG", fifo_cfg))
             `uvm_fatal("build_phase", "Agent - Unable to get the configuration object.");
         
-        sqr = fifo_sequencer::type_id::create("sqr", this);
+        sqr = uvm_sequencer #(fifo_seq_item)::type_id::create("sqr", this);
         drv = fifo_driver::type_id::create("drv", this);
         mon = fifo_monitor::type_id::create("mon", this);
 
@@ -38,8 +38,8 @@ class fifo_agent extends uvm_agent;
         drv.fifo_vif = fifo_cfg.fifo_vif;
         mon.fifo_vif = fifo_cfg.fifo_vif;
 
-        drv.seq_item_port.connect(sqr.seq_item_port);
+        drv.seq_item_port.connect(sqr.seq_item_export);
         mon.mon_ap.connect(agt_ap);
     endfunction
-
+    
 endclass

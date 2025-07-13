@@ -27,6 +27,7 @@ class fifo_scoreboard extends uvm_scoreboard;
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
+        seq_item_sb = fifo_seq_item::type_id::create("seq_item_sb");
         sb_export = new("sb_export", this);
         sb_fifo = new("sb_fifo", this);
     endfunction
@@ -38,12 +39,13 @@ class fifo_scoreboard extends uvm_scoreboard;
 
     task run_phase(uvm_phase phase);
         super.run_phase(phase);
-
+        `uvm_info(get_type_name(), "Entered scoreboard run_phase", UVM_MEDIUM);
         forever begin
             sb_fifo.get(seq_item_sb);
             // call ref model
             fifo_reference_model(seq_item_sb);
             // compare
+            `uvm_info(get_type_name(), $sformatf("Got item from FIFO: data_out=%0h", seq_item_sb.data_out), UVM_MEDIUM);
             if (seq_item_sb.data_out !== data_out_ref) begin
                 error_count++;
                 `uvm_error(get_type_name(), $sformatf("Data mismatch: Expected = %0h, Actual = %0h", data_out_ref, seq_item_sb.data_out));
@@ -122,13 +124,13 @@ class fifo_scoreboard extends uvm_scoreboard;
             empty_ref = 1'b1;
             almostfull_ref = 1'b0;
             almostempty_ref = 1'b0;
-            underflow_ref = rd_en ? 1'b1 : 1'b0;
+            underflow_ref = seq_item_chk.rd_en ? 1'b1 : 1'b0;
         end
         else begin 
             fork
                 begin
                     if (seq_item_chk.wr_en && count < FIFO_DEPTH) begin
-                        mem_ref[wr_ptr] = data_in;
+                        mem_ref[wr_ptr] = seq_item_chk.data_in;
                         wr_ptr++;
                         wr_ack_ref = 1'b1;
                     end

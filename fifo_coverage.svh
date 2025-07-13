@@ -16,18 +16,18 @@ class fifo_coverage extends uvm_component;
     // Covergroups
     covergroup FIFO_cvr_grp;
         // Coverpoints for FIFO transaction signals
-        rst_n_c:        coverpoint F_cvg_txn.rst_n;
-        wr_en_c:        coverpoint F_cvg_txn.wr_en;
-        rd_en_c:        coverpoint F_cvg_txn.rd_en;
-        // data_in_c:      coverpoint F_cvg_txn.data_in {option.cross_auto_bin_max = 0;};
-        // data_out_c:     coverpoint F_cvg_txn.data_out{option.cross_auto_bin_max = 0;};
-        wr_ack_c:       coverpoint F_cvg_txn.wr_ack;
-        overflow_c:     coverpoint F_cvg_txn.overflow;
-        full_c:         coverpoint F_cvg_txn.full;
-        empty_c:        coverpoint F_cvg_txn.empty;
-        almostfull_c:   coverpoint F_cvg_txn.almostfull;
-        almostempty_c:  coverpoint F_cvg_txn.almostempty;
-        underflow_c:    coverpoint F_cvg_txn.underflow;
+        rst_n_c:        coverpoint seq_item_cov.rst_n;
+        wr_en_c:        coverpoint seq_item_cov.wr_en;
+        rd_en_c:        coverpoint seq_item_cov.rd_en;
+        // data_in_c:      coverpoint seq_item_cov.data_in {option.cross_auto_bin_max = 0;};
+        // data_out_c:     coverpoint seq_item_cov.data_out{option.cross_auto_bin_max = 0;};
+        wr_ack_c:       coverpoint seq_item_cov.wr_ack;
+        overflow_c:     coverpoint seq_item_cov.overflow;
+        full_c:         coverpoint seq_item_cov.full;
+        empty_c:        coverpoint seq_item_cov.empty;
+        almostfull_c:   coverpoint seq_item_cov.almostfull;
+        almostempty_c:  coverpoint seq_item_cov.almostempty;
+        underflow_c:    coverpoint seq_item_cov.underflow;
 
         // Cross coverage for write and read enable signals
 

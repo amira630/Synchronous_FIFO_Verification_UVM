@@ -5,8 +5,9 @@ package fifo_env_pkg;
     `include "uvm_macros.svh"
 
     // Any further package imports:
+    import shared_pkg::*;
     import fifo_transactions_pkg::*;
-    
+
     import fifo_agent_pkg::*;
 
     // Includes:

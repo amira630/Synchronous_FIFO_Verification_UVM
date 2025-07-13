@@ -6,27 +6,27 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module FIFO #(parameter FIFO_WIDTH = 16, FIFO_DEPTH = 8) (FIFO_if.DUT fifo_if);
+module FIFO #(parameter FIFO_WIDTH = 16, FIFO_DEPTH = 8) (fifo_if.DUT fifoif);
 
 logic clk, rst_n, wr_en, rd_en, wr_ack, overflow, full, empty, almostfull, almostempty, underflow;
 logic [FIFO_WIDTH-1:0] data_in;
 logic [FIFO_WIDTH-1:0] data_out;
 
 // Interface signals
-assign clk = fifo_if.clk;
-assign rst_n = fifo_if.rst_n;
-assign wr_en = fifo_if.wr_en;
-assign rd_en = fifo_if.rd_en;
-assign data_in = fifo_if.data_in;
+assign clk = fifoif.clk;
+assign rst_n = fifoif.rst_n;
+assign wr_en = fifoif.wr_en;
+assign rd_en = fifoif.rd_en;
+assign data_in = fifoif.data_in;
 
-assign fifo_if.data_out = data_out;
-assign fifo_if.wr_ack = wr_ack;
-assign fifo_if.overflow = overflow;
-assign fifo_if.full = full;
-assign fifo_if.empty = empty;
-assign fifo_if.almostfull = almostfull;
-assign fifo_if.almostempty = almostempty;
-assign fifo_if.underflow = underflow;
+assign fifoif.data_out = data_out;
+assign fifoif.wr_ack = wr_ack;
+assign fifoif.overflow = overflow;
+assign fifoif.full = full;
+assign fifoif.empty = empty;
+assign fifoif.almostfull = almostfull;
+assign fifoif.almostempty = almostempty;
+assign fifoif.underflow = underflow;
 
 localparam max_fifo_addr = $clog2(FIFO_DEPTH);
 

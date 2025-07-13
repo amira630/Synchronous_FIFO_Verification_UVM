@@ -14,6 +14,34 @@ class fifo_base_sequence extends uvm_sequence #(fifo_seq_item);
         super.new(name);
     endfunction //new()
 
+    /////////////////////////// Reset /////////////////////////////////////
+
+    task reset();
+        // Reset the DUT and wait for it to be ready
+        `uvm_info(get_type_name(), "Resetting DUT", UVM_MEDIUM)
+        if(seq_item == null) begin
+            seq_item = fifo_seq_item::type_id::create("seq_item");
+        end
+
+        seq_item.constraint_mode(0);
+
+        repeat (2) begin
+            start_item(seq_item);
+                seq_item.wr_en 	= 1'b1;
+                seq_item.rd_en 	= 1'b0;
+                seq_item.data_in = 16'hFF_FF; // Example data	
+                seq_item.rst_n = 1'b0;
+            finish_item(seq_item);
+        end
+
+        `uvm_info(get_type_name(), "DUT Reset complete", UVM_MEDIUM)
+
+        start_item(seq_item);
+            seq_item.wr_en 	= 1'b0;
+            seq_item.rst_n = 1'b1;
+        finish_item(seq_item);       
+    endtask
+
     ///////////////////////////////// Write Only Sequence //////////////////////////////////
 
     task write_only();
@@ -24,8 +52,9 @@ class fifo_base_sequence extends uvm_sequence #(fifo_seq_item);
 
         seq_item.constraint_mode(0);
         seq_item.write_only.constraint_mode(1);
+        seq_item.c_rst_n.constraint_mode(1);
 
-        repeat (25) begin
+        repeat (50) begin
             start_item(seq_item);
                 assert(seq_item.randomize());
             finish_item(seq_item);
@@ -43,9 +72,10 @@ class fifo_base_sequence extends uvm_sequence #(fifo_seq_item);
 
         seq_item.constraint_mode(0);
         seq_item.read_only.constraint_mode(1);
+        seq_item.c_rst_n.constraint_mode(1);
         seq_item.data_in.rand_mode(0);  
 
-        repeat (20) begin
+        repeat (30) begin
             start_item(seq_item);
                 assert(seq_item.randomize());
             finish_item(seq_item);
@@ -56,8 +86,8 @@ class fifo_base_sequence extends uvm_sequence #(fifo_seq_item);
 
     ///////////////////////////////// Write and Read Sequence //////////////////////////////////
 
-    task write_read_only();
-        `uvm_info(get_type_name(), "start read only task", UVM_MEDIUM)
+    task write_read();
+        `uvm_info(get_type_name(), "start write + read task", UVM_MEDIUM)
         if(seq_item == null) begin
             seq_item = fifo_seq_item::type_id::create("seq_item");
         end

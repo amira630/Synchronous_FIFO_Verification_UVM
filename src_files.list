@@ -5,4 +5,5 @@ fifo_env_pkg.sv
 fifo_test_pkg.sv
 fifo_if.sv 
 FIFO.sv
+fifo_sva.sv
 top.sv

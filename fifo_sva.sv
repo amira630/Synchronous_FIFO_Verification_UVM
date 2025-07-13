@@ -5,9 +5,10 @@
 // Description: Class containing all assertions for the DUT.
 /////////////////////////////////////////////////////////////////
 
-import fifo_transactions_pkg::*;
+// Any further package imports:
+import shared_pkg::*;
 
-module fifo_sva (FIFO_if.DUT fifo_if);
+module fifo_sva (fifo_if.DUT fifoif);
 
     logic clk, rst_n, wr_en, rd_en, wr_ack, overflow, full, empty, almostfull, almostempty, underflow;
     logic [FIFO_WIDTH-1:0] data_out;
@@ -15,19 +16,19 @@ module fifo_sva (FIFO_if.DUT fifo_if);
     reg [max_fifo_addr:0] count;
 
     // Interface signals
-    assign clk = fifo_if.clk;
-    assign rst_n = fifo_if.rst_n;
-    assign wr_en = fifo_if.wr_en;
-    assign rd_en = fifo_if.rd_en;
+    assign clk = fifoif.clk;
+    assign rst_n = fifoif.rst_n;
+    assign wr_en = fifoif.wr_en;
+    assign rd_en = fifoif.rd_en;
 
-    assign data_out = fifo_if.data_out;
-    assign wr_ack = fifo_if.wr_ack;
-    assign overflow = fifo_if.overflow;
-    assign full = fifo_if.full;
-    assign empty = fifo_if.empty;
-    assign almostfull= fifo_if.almostfull;
-    assign almostempty = fifo_if.almostempty;
-    assign underflow = fifo_if.underflow;
+    assign data_out = fifoif.data_out;
+    assign wr_ack = fifoif.wr_ack;
+    assign overflow = fifoif.overflow;
+    assign full = fifoif.full;
+    assign empty = fifoif.empty;
+    assign almostfull= fifoif.almostfull;
+    assign almostempty = fifoif.almostempty;
+    assign underflow = fifoif.underflow;
 
     assign count = FIFO.count;
 
