@@ -97,7 +97,7 @@ class fifo_base_sequence extends uvm_sequence #(fifo_seq_item);
         seq_item.read_only.constraint_mode(0);
         seq_item.write_only.constraint_mode(0);
 
-        repeat (100) begin
+        repeat (200) begin
             start_item(seq_item);
                 assert(seq_item.randomize());
             finish_item(seq_item);

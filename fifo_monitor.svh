@@ -41,6 +41,8 @@ class fifo_monitor extends uvm_monitor;
             rsp_seq_item.almostfull = fifo_vif.almostfull;
             rsp_seq_item.almostempty = fifo_vif.almostempty;
             rsp_seq_item.underflow = fifo_vif.underflow;
+
+            mon_ap.write(rsp_seq_item);
             `uvm_info("run_phase", rsp_seq_item.convert2string(), UVM_HIGH)
         end
     endtask

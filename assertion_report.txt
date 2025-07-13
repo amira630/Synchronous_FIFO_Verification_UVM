@@ -1,0 +1,93 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /top/DUT/SVA
+=== Design Unit: work.fifo_sva
+=================================================================================
+
+Assertion Coverage:
+    Assertions                      10        10         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/top/DUT/SVA/assert__count_rd_prop
+                     fifo_sva.sv(96)                    0          1
+/top/DUT/SVA/assert__count_wr_prop
+                     fifo_sva.sv(95)                    0          1
+/top/DUT/SVA/assert__almostempty_prop
+                     fifo_sva.sv(94)                    0          1
+/top/DUT/SVA/assert__almostfull_prop
+                     fifo_sva.sv(93)                    0          1
+/top/DUT/SVA/assert__empty_prop
+                     fifo_sva.sv(92)                    0          1
+/top/DUT/SVA/assert__full_prop
+                     fifo_sva.sv(91)                    0          1
+/top/DUT/SVA/assert__wr_ack_prop
+                     fifo_sva.sv(90)                    0          1
+/top/DUT/SVA/assert__underflow_prop
+                     fifo_sva.sv(89)                    0          1
+/top/DUT/SVA/assert__overflow_prop
+                     fifo_sva.sv(88)                    0          1
+/top/DUT/SVA/#ublk#265645057#46/immed__47
+                     fifo_sva.sv(47)                    0          1
+
+=================================================================================
+=== Instance: /fifo_test_pkg
+=== Design Unit: work.fifo_test_pkg
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       3         3         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/fifo_test_pkg/fifo_base_sequence/write_only/#ublk#5583319#57/immed__59
+                     fifo_base_sequence.svh(59)
+                                                        0          1
+/fifo_test_pkg/fifo_base_sequence/read_only/#ublk#5583319#78/immed__80
+                     fifo_base_sequence.svh(80)
+                                                        0          1
+/fifo_test_pkg/fifo_base_sequence/write_read/#ublk#5583319#100/immed__102
+                     fifo_base_sequence.svh(102)
+                                                        0          1
+
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/top/DUT/SVA/assert__count_rd_prop
+                     fifo_sva.sv(96)                    0          1
+/top/DUT/SVA/assert__count_wr_prop
+                     fifo_sva.sv(95)                    0          1
+/top/DUT/SVA/assert__almostempty_prop
+                     fifo_sva.sv(94)                    0          1
+/top/DUT/SVA/assert__almostfull_prop
+                     fifo_sva.sv(93)                    0          1
+/top/DUT/SVA/assert__empty_prop
+                     fifo_sva.sv(92)                    0          1
+/top/DUT/SVA/assert__full_prop
+                     fifo_sva.sv(91)                    0          1
+/top/DUT/SVA/assert__wr_ack_prop
+                     fifo_sva.sv(90)                    0          1
+/top/DUT/SVA/assert__underflow_prop
+                     fifo_sva.sv(89)                    0          1
+/top/DUT/SVA/assert__overflow_prop
+                     fifo_sva.sv(88)                    0          1
+/top/DUT/SVA/#ublk#265645057#46/immed__47
+                     fifo_sva.sv(47)                    0          1
+/fifo_test_pkg/fifo_base_sequence/write_only/#ublk#5583319#57/immed__59
+                     fifo_base_sequence.svh(59)
+                                                        0          1
+/fifo_test_pkg/fifo_base_sequence/read_only/#ublk#5583319#78/immed__80
+                     fifo_base_sequence.svh(80)
+                                                        0          1
+/fifo_test_pkg/fifo_base_sequence/write_read/#ublk#5583319#100/immed__102
+                     fifo_base_sequence.svh(102)
+                                                        0          1
+
+Total Coverage By Instance (filtered view): 100.00%
+

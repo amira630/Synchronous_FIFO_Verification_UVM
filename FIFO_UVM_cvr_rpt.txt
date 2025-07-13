@@ -44,15 +44,15 @@ Branch Coverage for instance /\top#DUT /SVA
     ----         ----                      -----     ------ 
   File fifo_sva.sv
 ------------------------------------IF Branch------------------------------------
-    39                                        47     Count coming in to IF
-    39              1                         24     		if (!rst_n)
-    41              1                         23     		else
+    39                                        74     Count coming in to IF
+    39              1                         38     		if (!rst_n)
+    41              1                         36     		else
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    46                                       116     Count coming in to IF
-    46              1                         26     		if (!rst_deasserted) begin
-                                              90     All False Count
+    46                                       208     Count coming in to IF
+    46              1                         41     		if (!rst_deasserted) begin
+                                             167     All False Count
 Branch totals: 2 hits of 2 branches = 100.00%
 
 
@@ -65,15 +65,15 @@ DIRECTIVE COVERAGE:
 Name                                     Design Design   Lang File(Line)      Hits Status    
                                          Unit   UnitType                                     
 --------------------------------------------------------------------------------------------
-/\top#DUT /SVA/cover__count_rd_prop      fifo_sva Verilog  SVA  fifo_sva.sv(106)  15 Covered   
-/\top#DUT /SVA/cover__count_wr_prop      fifo_sva Verilog  SVA  fifo_sva.sv(105)  45 Covered   
-/\top#DUT /SVA/cover__almostempty_prop   fifo_sva Verilog  SVA  fifo_sva.sv(104)  16 Covered   
-/\top#DUT /SVA/cover__almostfull_prop    fifo_sva Verilog  SVA  fifo_sva.sv(103)  10 Covered   
-/\top#DUT /SVA/cover__empty_prop         fifo_sva Verilog  SVA  fifo_sva.sv(102)  44 Covered   
-/\top#DUT /SVA/cover__full_prop          fifo_sva Verilog  SVA  fifo_sva.sv(101)  51 Covered   
-/\top#DUT /SVA/cover__wr_ack_prop        fifo_sva Verilog  SVA  fifo_sva.sv(100)  57 Covered   
-/\top#DUT /SVA/cover__underflow_prop     fifo_sva Verilog  SVA  fifo_sva.sv(99)   25 Covered   
-/\top#DUT /SVA/cover__overflow_prop      fifo_sva Verilog  SVA  fifo_sva.sv(98)   47 Covered   
+/\top#DUT /SVA/cover__count_rd_prop      fifo_sva Verilog  SVA  fifo_sva.sv(106)  23 Covered   
+/\top#DUT /SVA/cover__count_wr_prop      fifo_sva Verilog  SVA  fifo_sva.sv(105)  83 Covered   
+/\top#DUT /SVA/cover__almostempty_prop   fifo_sva Verilog  SVA  fifo_sva.sv(104)  24 Covered   
+/\top#DUT /SVA/cover__almostfull_prop    fifo_sva Verilog  SVA  fifo_sva.sv(103)  25 Covered   
+/\top#DUT /SVA/cover__empty_prop         fifo_sva Verilog  SVA  fifo_sva.sv(102)  56 Covered   
+/\top#DUT /SVA/cover__full_prop          fifo_sva Verilog  SVA  fifo_sva.sv(101)  67 Covered   
+/\top#DUT /SVA/cover__wr_ack_prop        fifo_sva Verilog  SVA  fifo_sva.sv(100) 108 Covered   
+/\top#DUT /SVA/cover__underflow_prop     fifo_sva Verilog  SVA  fifo_sva.sv(99)   30 Covered   
+/\top#DUT /SVA/cover__overflow_prop      fifo_sva Verilog  SVA  fifo_sva.sv(98)   59 Covered   
 Statement Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
@@ -94,33 +94,33 @@ Statement Coverage for instance /\top#DUT /SVA --
     16                                                   reg [max_fifo_addr:0] count;
     17                                               
     18                                                   // Interface signals
-    19              1                        367         assign clk = fifoif.clk;
-    20              1                         25         assign rst_n = fifoif.rst_n;
-    21              1                         52         assign wr_en = fifoif.wr_en;
-    22              1                         50         assign rd_en = fifoif.rd_en;
+    19              1                        567         assign clk = fifoif.clk;
+    20              1                         39         assign rst_n = fifoif.rst_n;
+    21              1                         90         assign wr_en = fifoif.wr_en;
+    22              1                         94         assign rd_en = fifoif.rd_en;
     23                                               
-    24              1                         40         assign data_out = fifoif.data_out;
-    25              1                         47         assign wr_ack = fifoif.wr_ack;
-    26              1                          8         assign overflow = fifoif.overflow;
-    27              1                         12         assign full = fifoif.full;
-    28              1                         25         assign empty = fifoif.empty;
-    29              1                         14         assign almostfull= fifoif.almostfull;
-    30              1                         36         assign almostempty = fifoif.almostempty;
-    31              1                         10         assign underflow = fifoif.underflow;
+    24              1                         67         assign data_out = fifoif.data_out;
+    25              1                         87         assign wr_ack = fifoif.wr_ack;
+    26              1                         20         assign overflow = fifoif.overflow;
+    27              1                         24         assign full = fifoif.full;
+    28              1                         39         assign empty = fifoif.empty;
+    29              1                         30         assign almostfull= fifoif.almostfull;
+    30              1                         51         assign almostempty = fifoif.almostempty;
+    31              1                         20         assign underflow = fifoif.underflow;
     32                                               
-    33              1                         76         assign count = FIFO.count;
+    33              1                        132         assign count = FIFO.count;
     34                                               
     35                                               	// Assertions and coverage for FIFO behavior
     36                                               	logic rst_deasserted;
     37                                               
-    38              1                         47     	always @(posedge clk or negedge rst_n) begin
+    38              1                         74     	always @(posedge clk or negedge rst_n) begin
     39                                               		if (!rst_n)
-    40              1                         24     			rst_deasserted <= 1'b0;
+    40              1                         38     			rst_deasserted <= 1'b0;
     41                                               		else
-    42              1                         23     			rst_deasserted <= 1'b1;
+    42              1                         36     			rst_deasserted <= 1'b1;
     43                                               	end
     44                                               
-    45              1                        116     	always @(posedge clk) begin
+    45              1                        208     	always @(posedge clk) begin
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -161,7 +161,7 @@ Toggle Coverage      =     100.00% (64 of 64 bins)
 Branch Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Branches                        26        25         1    96.15%
+    Branches                        26        26         0   100.00%
 
 ================================Branch Details================================
 
@@ -171,69 +171,69 @@ Branch Coverage for instance /\top#DUT
     ----         ----                      -----     ------ 
   File FIFO.sv
 ------------------------------------IF Branch------------------------------------
-    39                                       173     Count coming in to IF
-    39              1                         25     	if (!rst_n) begin
-    44              1                         61     	else if (wr_en && count < FIFO_DEPTH) begin 
-    50              1                         87     	else begin 
+    39                                       280     Count coming in to IF
+    39              1                         40     	if (!rst_n) begin
+    44              1                        115     	else if (wr_en && count < FIFO_DEPTH) begin 
+    50              1                        125     	else begin 
 Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    52                                        87     Count coming in to IF
-    52              1                         47     		if (full && wr_en) begin // should be && not & for conditional coverage
-    55              1                         40     		else begin
+    52                                       125     Count coming in to IF
+    52              1                         60     		if (full && wr_en) begin // should be && not & for conditional coverage
+    55              1                         65     		else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    62                                       118     Count coming in to IF
-    62              1                         25     	if (!rst_n) begin
-    67              1                         31     	else if (rd_en && count != 0) begin 
-    72              1                          5     	else if (rd_en) begin
-    75              1                         57     	else begin
+    62                                       207     Count coming in to IF
+    62              1                         39     	if (!rst_n) begin
+    67              1                         52     	else if (rd_en && count != 0) begin 
+    72              1                         10     	else if (rd_en) begin
+    75              1                        106     	else begin
 Branch totals: 4 hits of 4 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    81                                       125     Count coming in to IF
-    81              1                         25     	if (!rst_n) begin
-    84              1                        100     	else begin
+    81                                       221     Count coming in to IF
+    81              1                         40     	if (!rst_n) begin
+    84              1                        181     	else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    85                                       100     Count coming in to IF
-    85              1                         12     		if ({wr_en, rd_en} == 2'b11) begin  //The possibility of rd & wr enable with either empty or full was not considered.
-    91              1                         47     		else if	( ({wr_en, rd_en} == 2'b10) && !full) 
-    93              1                         18     		else if (rd_en && !empty) // for conditional coverage 
-                                              23     All False Count
+    85                                       181     Count coming in to IF
+    85              1                         29     		if ({wr_en, rd_en} == 2'b11) begin  //The possibility of rd & wr enable with either empty or full was not considered.
+    91              1                         85     		else if	( ({wr_en, rd_en} == 2'b10) && !full) 
+    93              1                         23     		else if (rd_en && !empty) // for conditional coverage 
+                                              44     All False Count
 Branch totals: 4 hits of 4 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    86                                        12     Count coming in to IF
-    86              1                          1     			if (empty)
-    88              1                    ***0***     			else if	(full)
-                                              11     All False Count
-Branch totals: 2 hits of 3 branches = 66.66%
+    86                                        29     Count coming in to IF
+    86              1                          4     			if (empty)
+    88              1                          3     			else if	(full)
+                                              22     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    98                                        75     Count coming in to IF
-    98              1                          5     assign full = (count == FIFO_DEPTH)? 1 : 0;
-    98              2                         70     assign full = (count == FIFO_DEPTH)? 1 : 0;
+    98                                       131     Count coming in to IF
+    98              1                         11     assign full = (count == FIFO_DEPTH)? 1 : 0;
+    98              2                        120     assign full = (count == FIFO_DEPTH)? 1 : 0;
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    99                                        75     Count coming in to IF
-    99              1                         12     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
-    99              2                         63     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
+    99                                       131     Count coming in to IF
+    99              1                         19     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
+    99              2                        112     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    100                                       75     Count coming in to IF
-    100             1                          6     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
-    100             2                         69     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
+    100                                      131     Count coming in to IF
+    100             1                         14     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
+    100             2                        117     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    101                                       75     Count coming in to IF
-    101             1                         17     assign almostempty = (count == 1)? 1 : 0;
-    101             2                         58     assign almostempty = (count == 1)? 1 : 0;
+    101                                      131     Count coming in to IF
+    101             1                         25     assign almostempty = (count == 1)? 1 : 0;
+    101             2                        106     assign almostempty = (count == 1)? 1 : 0;
 Branch totals: 2 hits of 2 branches = 100.00%
 
 
@@ -402,7 +402,7 @@ Condition totals: 1 of 1 input term covered = 100.00%
 Statement Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Statements                      35        34         1    97.14%
+    Statements                      35        35         0   100.00%
 
 ================================Statement Details================================
 
@@ -418,11 +418,11 @@ Statement Coverage for instance /\top#DUT  --
     13                                               logic [FIFO_WIDTH-1:0] data_out;
     14                                               
     15                                               // Interface signals
-    16              1                        367     assign clk = fifoif.clk;
-    17              1                         25     assign rst_n = fifoif.rst_n;
-    18              1                         52     assign wr_en = fifoif.wr_en;
-    19              1                         50     assign rd_en = fifoif.rd_en;
-    20              1                        153     assign data_in = fifoif.data_in;
+    16              1                        567     assign clk = fifoif.clk;
+    17              1                         39     assign rst_n = fifoif.rst_n;
+    18              1                         90     assign wr_en = fifoif.wr_en;
+    19              1                         94     assign rd_en = fifoif.rd_en;
+    20              1                        253     assign data_in = fifoif.data_in;
     21                                               
     22                                               assign fifoif.data_out = data_out;
     23                                               assign fifoif.wr_ack = wr_ack;
@@ -440,70 +440,70 @@ Statement Coverage for instance /\top#DUT  --
     35                                               reg [max_fifo_addr-1:0] wr_ptr, rd_ptr;
     36                                               reg [max_fifo_addr:0] count;
     37                                               
-    38              1                        173     always @(posedge clk or negedge rst_n) begin
+    38              1                        280     always @(posedge clk or negedge rst_n) begin
     39                                               	if (!rst_n) begin
-    40              1                         25     		wr_ptr <= 0;
-    41              1                         25     		wr_ack <= 0;   //wr_ack and overflow were not reset
-    42              1                         25     		overflow <= 0;
+    40              1                         40     		wr_ptr <= 0;
+    41              1                         40     		wr_ack <= 0;   //wr_ack and overflow were not reset
+    42              1                         40     		overflow <= 0;
     43                                               	end
     44                                               	else if (wr_en && count < FIFO_DEPTH) begin 
-    45              1                         61     		mem[wr_ptr] <= data_in;
-    46              1                         61     		wr_ack <= 1;
-    47              1                         61     		wr_ptr <= wr_ptr + 1;
-    48              1                         61     		overflow <= 0;  //overflow should be zero if wr_en and !full
+    45              1                        115     		mem[wr_ptr] <= data_in;
+    46              1                        115     		wr_ack <= 1;
+    47              1                        115     		wr_ptr <= wr_ptr + 1;
+    48              1                        115     		overflow <= 0;  //overflow should be zero if wr_en and !full
     49                                               	end
     50                                               	else begin 
-    51              1                         87     		wr_ack <= 0; 
+    51              1                        125     		wr_ack <= 0; 
     52                                               		if (full && wr_en) begin // should be && not & for conditional coverage
-    53              1                         47     			overflow <= 1;
+    53              1                         60     			overflow <= 1;
     54                                               		end
     55                                               		else begin
-    56              1                         40     			overflow <= 0;
+    56              1                         65     			overflow <= 0;
     57                                               		end
     58                                               	end
     59                                               end
     60                                               
-    61              1                        118     always @(posedge clk or negedge rst_n) begin
+    61              1                        207     always @(posedge clk or negedge rst_n) begin
     62                                               	if (!rst_n) begin
-    63              1                         25     		rd_ptr <= 0;
-    64              1                         25     		data_out <= 0;  //data_out was not reset
-    65              1                         25     		underflow <= 0; // rst_n was not accounted for
+    63              1                         39     		rd_ptr <= 0;
+    64              1                         39     		data_out <= 0;  //data_out was not reset
+    65              1                         39     		underflow <= 0; // rst_n was not accounted for
     66                                               	end
     67                                               	else if (rd_en && count != 0) begin 
-    68              1                         31     		data_out <= mem[rd_ptr];
-    69              1                         31     		rd_ptr <= rd_ptr + 1;
-    70              1                         31     		underflow <= 1'b0; 
+    68              1                         52     		data_out <= mem[rd_ptr];
+    69              1                         52     		rd_ptr <= rd_ptr + 1;
+    70              1                         52     		underflow <= 1'b0; 
     71                                               	end
     72                                               	else if (rd_en) begin
-    73              1                          5     		underflow <= 1'b1;
+    73              1                         10     		underflow <= 1'b1;
     74                                               	end
     75                                               	else begin
-    76              1                         57     		underflow <= 1'b0; 
+    76              1                        106     		underflow <= 1'b0; 
     77                                               	end
     78                                               end
     79                                               
-    80              1                        125     always @(posedge clk or negedge rst_n) begin
+    80              1                        221     always @(posedge clk or negedge rst_n) begin
     81                                               	if (!rst_n) begin
-    82              1                         25     		count <= 0;
+    82              1                         40     		count <= 0;
     83                                               	end
     84                                               	else begin
     85                                               		if ({wr_en, rd_en} == 2'b11) begin  //The possibility of rd & wr enable with either empty or full was not considered.
     86                                               			if (empty)
-    87              1                          1     				count <= count + 1;
+    87              1                          4     				count <= count + 1;
     88                                               			else if	(full)
-    89              1                    ***0***     				count <= count - 1;
+    89              1                          3     				count <= count - 1;
     90                                               		end
     91                                               		else if	( ({wr_en, rd_en} == 2'b10) && !full) 
-    92              1                         47     			count <= count + 1;
+    92              1                         85     			count <= count + 1;
     93                                               		else if (rd_en && !empty) // for conditional coverage 
-    94              1                         18     			count <= count - 1;
+    94              1                         23     			count <= count - 1;
     95                                               	end
     96                                               end
     97                                               
-    98              1                         76     assign full = (count == FIFO_DEPTH)? 1 : 0;
-    99              1                         76     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
-    100             1                         76     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
-    101             1                         76     assign almostempty = (count == 1)? 1 : 0;
+    98              1                        132     assign full = (count == FIFO_DEPTH)? 1 : 0;
+    99              1                        132     assign empty = (count == 0)? 1 : 0; // underflow was placed inside read always block
+    100             1                        132     assign almostfull = (count == FIFO_DEPTH-1)? 1 : 0; // it was FIFO_DEPTH-2, almostfull means 1 element can be added
+    101             1                        132     assign almostempty = (count == 1)? 1 : 0;
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -545,15 +545,15 @@ DIRECTIVE COVERAGE:
 Name                                     Design Design   Lang File(Line)      Hits Status    
                                          Unit   UnitType                                     
 --------------------------------------------------------------------------------------------
-/\top#DUT /SVA/cover__count_rd_prop      fifo_sva Verilog  SVA  fifo_sva.sv(106)  15 Covered   
-/\top#DUT /SVA/cover__count_wr_prop      fifo_sva Verilog  SVA  fifo_sva.sv(105)  45 Covered   
-/\top#DUT /SVA/cover__almostempty_prop   fifo_sva Verilog  SVA  fifo_sva.sv(104)  16 Covered   
-/\top#DUT /SVA/cover__almostfull_prop    fifo_sva Verilog  SVA  fifo_sva.sv(103)  10 Covered   
-/\top#DUT /SVA/cover__empty_prop         fifo_sva Verilog  SVA  fifo_sva.sv(102)  44 Covered   
-/\top#DUT /SVA/cover__full_prop          fifo_sva Verilog  SVA  fifo_sva.sv(101)  51 Covered   
-/\top#DUT /SVA/cover__wr_ack_prop        fifo_sva Verilog  SVA  fifo_sva.sv(100)  57 Covered   
-/\top#DUT /SVA/cover__underflow_prop     fifo_sva Verilog  SVA  fifo_sva.sv(99)   25 Covered   
-/\top#DUT /SVA/cover__overflow_prop      fifo_sva Verilog  SVA  fifo_sva.sv(98)   47 Covered   
+/\top#DUT /SVA/cover__count_rd_prop      fifo_sva Verilog  SVA  fifo_sva.sv(106)  23 Covered   
+/\top#DUT /SVA/cover__count_wr_prop      fifo_sva Verilog  SVA  fifo_sva.sv(105)  83 Covered   
+/\top#DUT /SVA/cover__almostempty_prop   fifo_sva Verilog  SVA  fifo_sva.sv(104)  24 Covered   
+/\top#DUT /SVA/cover__almostfull_prop    fifo_sva Verilog  SVA  fifo_sva.sv(103)  25 Covered   
+/\top#DUT /SVA/cover__empty_prop         fifo_sva Verilog  SVA  fifo_sva.sv(102)  56 Covered   
+/\top#DUT /SVA/cover__full_prop          fifo_sva Verilog  SVA  fifo_sva.sv(101)  67 Covered   
+/\top#DUT /SVA/cover__wr_ack_prop        fifo_sva Verilog  SVA  fifo_sva.sv(100) 108 Covered   
+/\top#DUT /SVA/cover__underflow_prop     fifo_sva Verilog  SVA  fifo_sva.sv(99)   30 Covered   
+/\top#DUT /SVA/cover__overflow_prop      fifo_sva Verilog  SVA  fifo_sva.sv(98)   59 Covered   
 
 TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 9
 
@@ -583,5 +583,5 @@ Name                 File(Line)                   Failure      Pass
 /\top#DUT /SVA/#ublk#265645057#46/immed__47
                      fifo_sva.sv(47)                    0          1
 
-Total Coverage By Instance (filtered view): 99.12%
+Total Coverage By Instance (filtered view): 100.00%
 
