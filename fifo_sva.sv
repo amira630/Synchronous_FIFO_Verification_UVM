@@ -50,15 +50,15 @@ module fifo_sva (fifo_if.DUT fifoif);
 	end
 
 	property overflow_prop;
-		@(posedge clk) disable iff (~rst_n) (wr_en && full) |=> overflow ;
+		@(posedge clk) disable iff (~rst_n) (wr_en && full) |=> overflow;
 	endproperty
 
 	property underflow_prop;
-		@(posedge clk) disable iff (~rst_n) (rd_en && empty) |=> underflow ;
+		@(posedge clk) disable iff (~rst_n) (rd_en && empty) |=> underflow;
 	endproperty
 
 	property wr_ack_prop;
-		@(posedge clk) disable iff (~rst_n) (wr_en && count < FIFO_DEPTH) |=> wr_ack ;
+		@(posedge clk) disable iff (~rst_n) (wr_en && count < FIFO_DEPTH) |=> wr_ack;
 	endproperty
 
 	property full_prop;
