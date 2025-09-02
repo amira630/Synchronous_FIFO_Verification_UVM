@@ -2,7 +2,7 @@
 // Author: Amira Atef
 // Course: Digital Verification using SV & UVM
 // Date: 12-07-2025
-// Description: Scoreboard class for a UVM verification scoreboardironment.
+// Description: Scoreboard class for a UVM verification environment.
 ////////////////////////////////////////////////////////////////////////////////
 
 class fifo_scoreboard extends uvm_scoreboard;
