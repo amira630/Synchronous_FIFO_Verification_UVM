@@ -2,7 +2,7 @@
 // Author: Amira Atef
 // Course: Digital Verification using SV & UVM
 // Date: 12-07-2025
-// Description: Coverage Collector class for a UVM verification coverageironment.
+// Description: Coverage Collector class for a UVM verification environment.
 ////////////////////////////////////////////////////////////////////////////////
 
 class fifo_coverage extends uvm_component;
