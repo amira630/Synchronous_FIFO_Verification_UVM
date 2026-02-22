@@ -27,12 +27,12 @@ class fifo_test extends uvm_test;
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         env = fifo_env::type_id::create("env", this);
-        fifo_cfg = fifo_config::type_id::create("fifo_cfg", this);
+        fifo_cfg = fifo_config::type_id::create("fifo_cfg");
         // Sequences creation
-        reset_seq = reset_sequence::type_id::create("reset_seq", this);
-        wr_seq = write_only_sequence::type_id::create("wr_seq", this);
-        rd_seq = read_only_sequence::type_id::create("rd_seq", this);
-        wr_rd_seq = write_read_sequence::type_id::create("wr_rd_seq", this);
+        reset_seq = reset_sequence::type_id::create("reset_seq");
+        wr_seq = write_only_sequence::type_id::create("wr_seq");
+        rd_seq = read_only_sequence::type_id::create("rd_seq");
+        wr_rd_seq = write_read_sequence::type_id::create("wr_rd_seq");
 
         if (!uvm_config_db #(virtual fifo_if)::get(this, "", "FIFO_IF", fifo_cfg.fifo_vif))
             `uvm_fatal("build_phase", "Test - Unable to get the virtual interface of the FIFO from the uvm_config_db.");
